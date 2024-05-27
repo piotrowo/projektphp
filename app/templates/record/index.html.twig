@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Records list
+{% endblock %}
+
+{% block body %}
+    <h1>Records list</h1>
+    {% if records is defined and records|length %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Tags</th>
+                <th scope="col">
+                    Actions
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for record in records %}
+                <tr>
+                    <td>{{ record.id }}</td>
+                    <td>{{ record.title }}</td>
+                    <td>{{ record.tags|join(', ') }}</td>
+                    <td>&nbsp;</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>
+            List is empty.
+        </p>
+    {% endif %}
+{% endblock  %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    View record
+{% endblock %}
+
+{% block body %}
+    <h1>View record</h1>
+    {% if record is defined and record|length %}
+        <dl>
+            <dt>Title</dt>
+            <dd>{{ record.title }}</dd>
+            <dt>Content</dt>
+            <dd>{{ record.content }}</dd>
+            <dt>Tags</dt>
+            <dd>{{ record.tags|join(', ') }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            Record not found.
+        </p>
+    {% endif %}
+{% endblock %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    View record
+{% endblock %}
+
+{% block body %}
+    <h1>View record</h1>
+    {% if record is defined and record|length %}
+        <dl>
+            <dt>Title</dt>
+            <dd>{{ record.title }}</dd>
+            <dt>Content</dt>
+            <dd>{{ record.content }}</dd>
+            <dt>Tags</dt>
+            <dd>{{ record.tags|join(', ') }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            Record not found.
+        </p>
+    {% endif %}
+{% endblock %}
