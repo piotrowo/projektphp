@@ -36,32 +36,19 @@ class RecordController extends AbstractController
             ['records' => $records]
         );
     }
+    #[Route(
+        '/{id}',
+        name: 'record_show',
+        requirements: ['id' => '[1-9]\d*'],
+        methods: 'GET'
+    )]
+    public function show(RecordRepository $repository, int $id): Response
+    {
+        $record = $repository->findOneById($id);
+
+        return $this->render(
+            'record/show.html.twig',
+            ['record' => $record]
+        );
+    }
 }
-
-
-// ...
-/**
- * Show action.
- *
- * @param RecordRepository $repository Record repository
- * @param int $id Record identifier
- *
- * @return Response HTTP response
- */
-[Route(
-    '/{id}',
-    name: 'record_show',
-    requirements: ['id' => '[1-9]\d*'],
-    methods: 'GET'
-)],
-public
-function show(RecordRepository $repository, int $id): Response
-{
-    $record = $repository->findOneById($id);
-
-    return $this->render(
-        'record/show.html.twig',
-        ['record' => $record]
-    );
-}
-// ...
